@@ -1,6 +1,10 @@
 import React from "react";
 
-function List({ people }) {
+function List({ people, setPeople }) {
+  const handleDelete = (id) => {
+    const newPeople = people.filter((person) => person.id !== id);
+    setPeople(newPeople);
+  };
   return (
     <div>
       {people.map((person) => {
@@ -11,6 +15,9 @@ function List({ people }) {
             <div>
               <h4>{name}</h4>
               <p>{age}</p>
+              <button className="btn" onClick={() => handleDelete(id)}>
+                DELETE
+              </button>
             </div>
           </article>
         );
